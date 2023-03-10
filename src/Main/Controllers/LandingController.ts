@@ -105,7 +105,6 @@ export async function CreateDB(dbName: string): Promise<boolean> {
   //     }
   // });
 
-  // @ts-ignore
   //  const newDB =  await new sqlite3.Database(aPath, (err) => {
   //   if (err) {
   //     console.log("sqlite3 err: " +err);
