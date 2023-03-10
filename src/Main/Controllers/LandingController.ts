@@ -49,7 +49,7 @@ export function ChangeSettingsJSON(
   oldJson: SettingsJsonModel
 ): boolean {
   const jsonFile: string = fs.readFileSync(fullFilePath, "utf-8");
-  let json: SettingsJsonModel = JSON.parse(jsonFile);
+  const json: SettingsJsonModel = JSON.parse(jsonFile);
 
   json.payPeriodStartDate = oldJson.payPeriodStartDate;
   json.rounding = oldJson.rounding;
