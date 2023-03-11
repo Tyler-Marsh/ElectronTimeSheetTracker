@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
-//import DbResult from '../Models/DbResult';
-//import DbSingleResult from '../Models/DbSingleResult';
+
 import DepartmentsModel, { DepartmentModel } from "../Models/DepartmentModel";
 import RootStore from "./RootStore";
 

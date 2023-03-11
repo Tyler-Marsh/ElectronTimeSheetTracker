@@ -18,20 +18,6 @@ interface State {
   AMPM: "AM" | "PM";
 }
 
-// function reducer(state: State, action: {type : string, minutes: number, hours: string | number, AMPM: 'AM' | 'PM' }) {
-// 	const { type, minutes, hours, AMPM } = action;
-// 	switch(type) {
-// 		case 'update-minutes':
-// 			return {...state, minutes};
-// 		case 'update-hours':
-// 			return {...state, hours};
-// 		case 'update-AMPM':
-// 			return {...state, AMPM};
-
-// 		default:
-// 			return {...state};
-// 	}
-// }
 
 function TimeInput(Props: Props) {
   const [show, setShow] = useState(false);
@@ -72,7 +58,7 @@ function TimeInput(Props: Props) {
       if (inputRef.current && !inputRef?.current.contains(event.target)) {
         console.log("PROPS TIME: " + Props.time);
 
-        let hours: any = document.getElementById(`${Props.InOrOut}-Hours`);
+        const hours: any = document.getElementById(`${Props.InOrOut}-Hours`);
 
         const minutesArr: NodeListOf<HTMLInputElement> =
           document.querySelectorAll(".timeDigitInput");
@@ -80,13 +66,8 @@ function TimeInput(Props: Props) {
         const minutes = minutesArr[1].value + minutesArr[2].value;
         const finalTime = hours.value + minutes + " " + getAMPM();
 
-        console.log("FINAL TIME: " + finalTime);
-
-        //  Props.blurValidateTime(Props.InOrOut,'9', state.AMPM)
         hide();
-        // doesn't work because the props don't ever change???
-
-        //Props.blurValidateTime(Props.InOrOut, Props.time, Props.time.substring(6,8));
+        
       }
     });
   });
@@ -133,8 +114,7 @@ function TimeInput(Props: Props) {
       return;
     }
     if (state.hours.toString().length > e.target.value.length) {
-      const length = state.hours.toString().length;
-      let final =
+      const final =
         e.target.value.length === 0 ? 0 : parseInt(state.hours.toString()[0]);
 
       setState({ ...state, hours: final });
@@ -143,7 +123,7 @@ function TimeInput(Props: Props) {
     if (e.target.value[0] === "0" && !isNaN(parseInt(e.target.value))) {
       setState({ ...state, hours: e.target.value });
     }
-    let num = parseInt(e.target.value);
+    const num = parseInt(e.target.value);
     if (!isNaN(num)) {
       setState({ ...state, hours: num });
     }

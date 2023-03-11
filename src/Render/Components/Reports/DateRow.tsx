@@ -15,7 +15,7 @@ interface Props {
 }
 
 
-function DateRow(Props: Props) {
+function DateRow(Props: Props): JSX.Element {
 
 
   const minutesToHM = (minutes: number) :string =>  {
@@ -32,14 +32,11 @@ function DateRow(Props: Props) {
 
   const [state, setState] = useState(false);
   const {Shift, Index} = Props;
-  const {employeeStore, settingsStore} = useContext(RootStoreContext);
+  const {settingsStore} = useContext(RootStoreContext);
 
   function getTotal(startTime: any, endTime: any) {
 
-    // make roundigFun take in the dates and take care of the rest.
-    // it will return a string. This implments separation of concerns
-    // so it is simple and an user of the funciton doesn't need to know how it works
-    // they can just call it instead of setting up all this boiler plate logic that is hard to process
+  
     let shiftLengthMinutes = moment(endTime).diff(moment(startTime), 'minutes');
 
   

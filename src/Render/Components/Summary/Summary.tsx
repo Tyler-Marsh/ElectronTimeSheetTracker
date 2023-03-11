@@ -47,14 +47,9 @@ function reducer(state: State, action : {type: string, filterDepartmentName: str
 
 function Summary() {
   
-  const match: any = useRouteMatch();
   // const {settingsStore, employeeStore} = useContext(RootStoreContext);
-  const {employeeStore, settingsStore, departmentStore} = useStore();
-  // const {employeeStore, settingsStore, departmentStore} = useContext(RootStoreContext);
-  const Departments = departmentStore.Departments;
-  /* MUST ONLY SHOW NAMES WITHIN THE DEPARTMENT SELECTED */
-  const employees: EmployeesModel = employeeStore.Employees;
-
+  const {settingsStore, departmentStore} = useStore();
+ 
   const aState : State = {rerender: 0, filterName: '',showNameFilter: false, showDepartmentFilter: false, filterDepartmentKey: 0, filterDepartmentName: "All Departments"};
 
   const filterDepartment = (key: number,name: string) => {
@@ -93,10 +88,7 @@ function Summary() {
                 </div>
 
                 <FilterDepartmentButton show={state.showDepartmentFilter} setShow={toggleDepartmentFilter} filterDepartment={filterDepartment} selectedDepartment={state.filterDepartmentName} filterAble={departmentStore.Departments} label={"Department"} />
-{/* 
-            {match?.params?.view === "employee" &&
-                <FilterNameButton  label="Name" filterAble={employees} selectedName={state.filterName} filterName={filterName} show={state.showNameFilter} setShow={toggleNameFilter} />
-}*/}     
+  
             </div>
                 <div className="card" style={{width: "95%", margin: "1rem auto"}}>
                     <SummaryTable />

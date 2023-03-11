@@ -1,14 +1,13 @@
-import React, {useContext, useEffect, useReducer, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { observer} from 'mobx-react-lite';
 import '../../Css/styles.css';
 import moment from 'moment';
 import { RootStoreContext } from '../../Stores/RootStore';
 import {Result} from '../../Models/Result';
-import {getDateRange} from './ReportHelpers';
-import {ShiftModel, ShiftsModel}from '../../Models/ShiftModel'
+import {getDateRange, buildPlaceholderShift} from './ReportHelpers';
+import {ShiftModel}from '../../Models/ShiftModel'
 import {ApiResult} from '../../Models/ApiResult';
 import Loadingwheel from '../Loading/Loadingwheel';
-import {buildPlaceholderShift} from './ReportHelpers';
 import Week from './Week';
 import Donation from '../Donate/Donation';
 
@@ -57,7 +56,7 @@ interface State {
    }
 function Employee(Props: Props) {
 
-    const {employeeStore, settingsStore} = useContext(RootStoreContext);
+    const {settingsStore} = useContext(RootStoreContext);
     
 		const aState : State = {
             needFetch: false,
@@ -75,7 +74,6 @@ function Employee(Props: Props) {
 
     const api = {
         get: async function () {
-         // await new Promise((r, e) => setTimeout(r, 2000));
           await new Promise((r, e) => setTimeout(() => {
             const aRange : Result<moment.Moment[]> = getDateRange(settingsStore.StartDate, settingsStore.EndDate);
              r(aRange);
@@ -127,7 +125,7 @@ async function getShifts(db: string, StartDate: string, EndDate: string, Employe
                 let afterAddIncrement = true;
 
                 // 
-                let StartDate = settingsStore.SettingsJSON.payPeriodStartDate;
+                const StartDate = settingsStore.SettingsJSON.payPeriodStartDate;
                 let cutOffDate = 0;
             
                 if (StartDate === 0) {

@@ -3,11 +3,7 @@ import Modal from '../Containers/Modal';
 import AddEditShiftForm from './AddEditShiftForm';
 import {ShiftModel} from '../../Models/ShiftModel';
 import { RootStoreContext } from '../../Stores/RootStore';
-import DbSingleResult from '../../Models/DbSingleResult';
 
-// will have to pass employee id and department id into these
-// so maybe the settingStore will need to keep track of both of those
-// then I can do something with the Ids.
 
 interface Props {
   type: "edit" | "add";

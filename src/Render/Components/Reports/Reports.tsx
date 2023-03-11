@@ -1,9 +1,6 @@
 import '../../Css/styles.css';
-import React, {useContext, useReducer} from 'react';
-//import {useContext} from 'react';
-import { RootStoreContext, useStore } from '../../Stores/RootStore';
-// import { arrayExtensions } from 'mobx/dist/internal';
-import history from '../../Helpers/history';
+import React, { useReducer} from 'react';
+import {  useStore } from '../../Stores/RootStore';
 import NavigationBar from '../Navigation/NavigationBar'
 import Employee from './EmployeeReport';
 import Employees from './EmployeesReport';
@@ -12,8 +9,6 @@ import { observer } from 'mobx-react-lite';
 import DateControl from '../DateControls/DateControl';
 import FilterDepartmentButton from './FilterDepartmentButton';
 import FilterNameButton from './FilterNameButton';
-
-// import EmployeesModel, { EmployeeModel } from '../../Models/EmployeeModel';
 import EmployeesModel, {EmployeeModel} from '../../Models/EmployeeModel';
 
 interface State {
@@ -55,11 +50,6 @@ function reducer(state: State, action : {type: string, filterDepartmentName: str
 
 function Reports() {
 
-    // have no state for the filterName
-
-    // have no state for the filterDepartmentName
-
-    // make the filter only change the store???
     const aState : State = {rerender: 0, filterName: '',showNameFilter: false, showDepartmentFilter: false, filterDepartmentKey: 0, filterDepartmentName: "All Departments"};
 
     const filterDepartment = (key: number,name: string) => {

@@ -95,27 +95,6 @@ export async function CreateDB(dbName: string): Promise<boolean> {
 
   const db: bs3.Database = new bs3(aPath);
 
-  //      let db = new sqlite3.Database(aPath, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE
-  //       //@ts-ignore
-  // , (err) => {
-  //     if (err) {
-  //         console.error(err.message);
-  //     } else {
-  //         console.log('Connected to the chinook database.');
-  //     }
-  // });
-
-  //  const newDB =  await new sqlite3.Database(aPath, (err) => {
-  //   if (err) {
-  //     console.log("sqlite3 err: " +err);
-  //   }
-  //   }
-
-  //  })
-  //  newDB.close();
-
-  //  return true;
-
   try {
     db.exec(
       `CREATE TABLE IF NOT EXISTS Department (

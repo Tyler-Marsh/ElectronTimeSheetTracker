@@ -1,15 +1,11 @@
 import React, {useState, useContext} from 'react';
 import DateControl from '../DateControls/DateControl'
 import TimeInput from './TimeInput';
-import {getHoursMinutes, TimeParser} from '../../../Main/Helpers/Helpers'
+import {TimeParser} from '../../../Main/Helpers/Helpers'
 import DbSingleResult from '../../Models/DbSingleResult';
-import { apiDefineProperty } from 'mobx/dist/internal';
 import { RootStoreContext } from '../../Stores/RootStore';
 import {ShiftModel} from '../../Models/ShiftModel';
 import moment from 'moment';
-import { monitorEventLoopDelay } from 'perf_hooks';
-import { stringify } from 'querystring';
-import { setUncaughtExceptionCaptureCallback } from 'process';
 
 
 interface Props {
@@ -91,23 +87,6 @@ function AddEditShiftForm(Props: Props) {
   return parseInt(state.breakHours)*60  + parseInt(state.breakMinutes);
 }
 
-const hasNonDigits = (value: string) : boolean => {
-  // ignore :
-  return /[^:]{1}\D+/g.test(value);
-}
-
-const isLetter = (value :string) : boolean => {
-  return /[A-Za-z]/g.test(value);
-}
-
-const AMorPM = (value: string) : string => {
-  
-  const letter = value[6];
-  if (['qweasdzxcrfvtgb'].includes(letter)) {
-    return 'am';
-  }
-  return 'pm';
-}
 
 
   const PlusMinusMin = (InOrOut: string, sign: string, minute: string, indexPlace: number) => {
@@ -209,8 +188,6 @@ const AMorPM = (value: string) : string => {
 
     if (indexPlace === 1) {
       if (parseInt(value)===1) {
-        // put in one then a space and if the current value is equal
-        // to one then correct it else make it 12 because thats the maximum
         const newvalue = "1 "+state[InOrOut].substring(2,8);
         setState({
           ...state, [InOrOut] : newvalue
@@ -287,9 +264,7 @@ const AMorPM = (value: string) : string => {
     })
   }
 
-  // blur?
 
-  // shouldn't there be a time validation function that can just see what it is going to be???
   const blurValidateTime = (InOrOut: string, time: string, AMorPM: string) => {
 
     const parser = new TimeParser();
@@ -383,11 +358,6 @@ try {
   const newStart = moment(newMom+ " " + state.in, 'MM/DD/YYYY HH:mm A').format('MM/DD/YYYY HH:mm A');
   const newEnd = moment(newMom+ " "+ state.out, 'MM/DD/YYYY HH:mm A')
 
-  // INSERT SETTINGS HERE.
-  // GET SETTING UPON START UP
-
-  // MAKE JSON SETTINGS FILE NEAR THE DB?
-
   const diff = newEnd.diff(newStart, 'minutes')
   maxBreakHours = Math.floor(newEnd.diff(newStart, 'minutes')/60)
 
@@ -400,8 +370,6 @@ catch(err) {
 const setExtra =(e:React.ChangeEvent<HTMLInputElement>) => {
   setState({...state, extra: e.target.value});
 }
-
-console.log("IN TIME: " + state.in);
 
  return (
    <>

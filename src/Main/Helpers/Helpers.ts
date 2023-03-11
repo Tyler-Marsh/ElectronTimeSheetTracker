@@ -74,17 +74,10 @@ export class TimeParser {
       return "";
     }
 
-    // first non number
-    // 4 straight numbers then something else
-    // first array
-
     for (let i = 0; i < time[0].length; i++) {
       if (Number.isInteger(parseInt(time[0][i])) && firstCount < 4) {
         timeString += time[0][i];
         firstCount += 1;
-        // if (firstCount >= 4) {
-        //     return timeString;
-        // }
       }
       if (Number.isNaN(parseInt(time[0][i]))) {
         if (time[0][i] === "p" || time[0][i] === "a") {
@@ -173,10 +166,6 @@ export class TimeParser {
       return parseInt(time) > 5 ? "5" : time;
     }
     return parseInt(time) > 59 ? "59" : time;
-  }
-
-  isTime(time: string) {
-    // length of
   }
 }
 

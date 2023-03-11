@@ -12,8 +12,8 @@ function Settings() {
 
   const {settingsStore} = useContext(RootStoreContext);
 //  settingsStore?.SettingsJSON?.payPeriodStartDate, rounding: settingsStore?.SettingsJSON?.rounding
-  let initialRounding = settingsStore?.SettingsJSON?.rounding;
-  let initialPayPeriod = settingsStore?.SettingsJSON?.payPeriodStartDate;
+  const initialRounding = settingsStore?.SettingsJSON?.rounding;
+  const initialPayPeriod = settingsStore?.SettingsJSON?.payPeriodStartDate;
   const [state, setState] = useState({payPeriodStartDate:initialPayPeriod, rounding: initialRounding, message:''});
 
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday'];

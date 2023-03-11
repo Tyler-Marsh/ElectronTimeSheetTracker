@@ -18,16 +18,6 @@ interface State {
   show: boolean;
 }
 
-/* TODO */
-/* Take in the iterable object in props  */
-/* This seems like a huge pain  */
-/* Will need to specify if it is an object or an array for looping at the end?  *
-/* Be able to pass a function that updates the parent component */
-/* selection function that changes the text of the button */
-/* filter feature that temporarily shows less of the options */
-// const forRegex = "^" + state.filterName + ".+|" + state.filterName;
-// const reg = new RegExp(forRegex, 'i');
-// the input can contain its own state to filter
 function FilterDepartmentButton(Props: Props) {
  
   

@@ -26,20 +26,14 @@ function reducer(state: State, action: {type : string, message: string}) {
 	}
 }
 
-// StateDate: string;
-//  EndDate: string;
-//  Department: string;
-//  Name: string;
 
  function Employees(Props: Props) {
 
-    // doesn't necessarily need state, maybe just
-    // needs to have an update or something????
     const aState: State = {needFetch: false, message: ''};
     const [state, dispatch] = useReducer(reducer, aState);
 
 	useEffect(() => {
-		//  { loading: false, liked }
+		
 		let mounted = true;
         if (Props.StartDate.length !== 10 && Props.EndDate.length !== 10) {
             return 
@@ -47,7 +41,7 @@ function reducer(state: State, action: {type : string, message: string}) {
         //moment('2010-10-20').isAfter('2010-10-19');
         if (moment(Props.EndDate, "MM/DD/YYYY") >= moment(Props.StartDate, "MM/DD/YYYY"))
 		// only run on mount && when needFetch changes
-		//
+	
 		return () => {
 			mounted = false;
 		}
