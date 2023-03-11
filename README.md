@@ -13,13 +13,16 @@ Settings allow selectable options for work week start day and rounding shift min
 
 
 
-Selecting dates
+##Selecting dates
+Date calendar components let users select month, date, and a year.
 ![](/SelectDate.png)
 
-Summary of hours worked over a time period
+##Weekly Summary
+Each time have a summary stats after them. The day of week the week starts on can be changed in settings.
 ![](/WorkWeekSummary.png)
 
-Summary report that can be exported to a .csv file
+##Summary report that can be exported to a .csv file
+The report totals the hours for each individual contributor to a workspace.
 ![](/CreateReport.png)
 
 
