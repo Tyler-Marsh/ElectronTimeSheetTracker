@@ -13,6 +13,16 @@ Settings allow selectable options for work week start day and rounding shift min
 
 
 
+Selecting dates
+![](/SelectDate.png)
+
+Summary of hours worked over a time period
+![](/WorkWeekSummary.png)
+
+Summary report that can be exported to a .csv file
+![](/CreateReport.png)
+
+
 
 ## Tech
 TypeScript React.js front end
